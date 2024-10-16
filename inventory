@@ -1,0 +1,15 @@
+[all:vars]
+ansible_ssh_common_args='-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+
+[masters_first]
+            ip-10-0-1-54.ec2.internal ansible_host=10.0.1.54 # i-0346cdf7e5806e13d
+    
+[masters_others]
+    
+[masters:children]
+masters_first
+masters_others
+
+[workers]
+ip-10-0-1-76.ec2.internal ansible_host=10.0.1.76 # i-012502512bbf79a95
+ip-10-0-2-56.ec2.internal ansible_host=10.0.2.56 # i-02eab868ddaf14c12
